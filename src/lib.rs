@@ -1,3 +1,10 @@
 pub mod nr3;
 pub mod guassj;
 pub mod ludcmp;
+pub mod tridag;
+pub mod banded;
+pub mod svd;
+pub mod vander;
+pub mod toeplz;
+pub mod cholesky;
+pub mod qrdcmp;
