@@ -29,7 +29,7 @@ pub mod icrc;
 pub mod igray;
 pub mod incgammabeta;
 pub mod interior;
-pub mod interp;
+
 pub mod kdtree;
 pub mod ksdist;
 pub mod ludcmp;
@@ -71,3 +71,5 @@ pub mod convlv;
 pub mod correl;
 pub mod spectrum;
 pub mod linpredict;
+pub mod mcmc;
+pub mod stochsim;

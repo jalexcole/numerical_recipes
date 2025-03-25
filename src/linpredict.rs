@@ -58,12 +58,15 @@ pub fn memcof(data: &[f64], xms: &mut f64, d: &mut [f64]) {
     panic!("Never get here in memcof");
 }
 
+use std::f64::consts::TAU;
 #[cfg(feature = "nightly")]
 use std::simd::Simd;
 #[cfg(feature = "nightly")]
 use std::simd::num::SimdFloat;
 
 use num_complex::{Complex, ComplexFloat};
+
+use crate::roots_poly::zroots;
 #[cfg(feature = "nightly")]
 pub fn memcof(data: &[f64], xms: &mut f64, d: &mut [f64]) {
     let n = data.len();
@@ -159,7 +162,7 @@ pub fn fixrts(d: &mut [f64]) {
         a[j] = Complex::new(-1.0 * d[m - 1 - j], 0.0);
     }
 
-    zroots(a, roots, polish);
+    zroots::<f64>(&a, &mut roots, polish);
     for j in 0..m {
         if roots[j].abs() > 1.0 {
             roots[j] = -1.0 / (roots[j]).conj();
@@ -217,7 +220,7 @@ pub fn evlmem(fdt: f64, d: &[f64], xms: f64) -> f64 {
     let mut wi = 0.0;
     let mut wtemp;
     let m = d.len();
-    let theta = 6.28318530717959 * fdt;
+    let theta = TAU * fdt;
     let wpr = theta.cos();
     let wpi = theta.sin();
 
